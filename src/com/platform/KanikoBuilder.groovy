@@ -69,19 +69,21 @@ class KanikoBuilder implements Serializable {
         steps.echo "Pushed ${image}"
     }
 
-    /** context=. → full dockerfile path; else Dockerfile name relative to context. */
+    /**
+     * Dockerfile path passed to Kaniko --dockerfile (relative to --context).
+     * context=. → keep full repo path (banking style).
+     * context=services + dockerfile=auth-service/Dockerfile → auth-service/Dockerfile
+     * Do NOT strip to basename only (that pointed at empty services/Dockerfile).
+     */
     private static String dockerfileArg(Map meta) {
         def contextDir = meta.context ?: '.'
         def df = meta.dockerfile ?: 'Dockerfile'
         if (contextDir == '.' || contextDir == '') {
             return df
         }
-        if (!df.contains('/')) {
-            return df
-        }
         if (df.startsWith(contextDir + '/')) {
             return df.substring(contextDir.length() + 1)
         }
-        return df.tokenize('/').last()
+        return df
     }
 }
