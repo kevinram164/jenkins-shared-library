@@ -148,6 +148,68 @@ class Projects implements Serializable {
                 ],
             ],
         ],
+
+        'npd-shop': [
+            defaults: [
+                harborHost         : 'harbor-platform.apps.ocp01.npd.co',
+                harborProject      : 'npd-shop',
+                gitBranch          : 'main',
+                gitRepoUrl         : 'https://github.com/kevinram164/npd-shop.git',
+                gitopsValuesFile   : 'gitops/values-images.yaml',
+                vaultHarborPath    : 'npd-shop/harbor',
+                vaultGithubPath    : 'platform/github',
+                gitCommitEmail     : 'jenkins@npd-shop.local',
+                tagQuote           : true,
+            ],
+            sharedTriggers: [
+                [path: 'services/common/', except: ['shop-web']],
+                [path: 'services/requirements.txt', except: ['shop-web']],
+            ],
+            services: [
+                'gateway': [
+                    dockerfile  : 'gateway/Dockerfile',
+                    context     : 'services',
+                    helmKey     : 'gateway',
+                    watchPath   : 'services/gateway',
+                    snapshotMode: 'full',
+                ],
+                'auth-service': [
+                    dockerfile  : 'auth-service/Dockerfile',
+                    context     : 'services',
+                    helmKey     : 'authService',
+                    watchPath   : 'services/auth-service',
+                    snapshotMode: 'full',
+                ],
+                'catalog-service': [
+                    dockerfile  : 'catalog-service/Dockerfile',
+                    context     : 'services',
+                    helmKey     : 'catalogService',
+                    watchPath   : 'services/catalog-service',
+                    snapshotMode: 'full',
+                ],
+                'order-service': [
+                    dockerfile  : 'order-service/Dockerfile',
+                    context     : 'services',
+                    helmKey     : 'orderService',
+                    watchPath   : 'services/order-service',
+                    snapshotMode: 'full',
+                ],
+                'payment-worker': [
+                    dockerfile  : 'payment-worker/Dockerfile',
+                    context     : 'services',
+                    helmKey     : 'paymentWorker',
+                    watchPath   : 'services/payment-worker',
+                    snapshotMode: 'full',
+                ],
+                'shop-web': [
+                    dockerfile  : 'Dockerfile',
+                    context     : 'frontend',
+                    helmKey     : 'shopWeb',
+                    watchPath   : 'frontend',
+                    snapshotMode: 'time',
+                ],
+            ],
+        ],
     ]
 
     static Map get(String project) {
