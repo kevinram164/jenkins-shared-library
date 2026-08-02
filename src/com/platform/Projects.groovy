@@ -91,6 +91,12 @@ class Projects implements Serializable {
                     helmKey     : 'notification-service',
                     snapshotMode: 'full',
                 ],
+                'shop-bridge': [
+                    dockerfile  : 'phase8-application-v3/services/shop-bridge/Dockerfile',
+                    context     : '.',
+                    helmKey     : 'shop-bridge',
+                    snapshotMode: 'full',
+                ],
                 'frontend': [
                     dockerfile  : 'Dockerfile',
                     context     : 'frontend',
