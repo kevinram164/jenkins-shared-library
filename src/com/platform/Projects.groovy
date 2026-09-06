@@ -58,7 +58,7 @@ class Projects implements Serializable {
                 tagQuote           : false,
             ],
             sharedTriggers: [
-                [path: 'phase8-application-v3/common/', except: ['frontend']],
+                [path: 'phase8-application-v3/common/', except: ['frontend', 'frontend-green']],
             ],
             services: [
                 'api-producer': [
@@ -102,6 +102,14 @@ class Projects implements Serializable {
                     context     : 'frontend',
                     helmKey     : 'frontend',
                     watchPath   : 'frontend',
+                    snapshotMode: 'time',
+                ],
+                // Blue-Green FE v2 — folder frontend-green/ (không dùng UI_VARIANT)
+                'frontend-green': [
+                    dockerfile  : 'Dockerfile',
+                    context     : 'frontend-green',
+                    helmKey     : 'frontend-green',
+                    watchPath   : 'frontend-green',
                     snapshotMode: 'time',
                 ],
             ],
