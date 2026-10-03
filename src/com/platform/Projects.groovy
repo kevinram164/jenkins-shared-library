@@ -47,13 +47,11 @@ class Projects implements Serializable {
 
         'banking-demo': [
             defaults: [
-                harborHost         : 'harbor-platform.apps.ocp01.npd.co',
+                harborHost         : 'harbor-npd.co',
                 harborProject      : 'banking-demo',
-                gitBranch          : 'dev-ocp',
+                gitBranch          : 'dev-k8s',
                 gitRepoUrl         : 'https://github.com/kevinram164/banking-demo.git',
-                gitopsRepoUrl      : 'https://github.com/kevinram164/cloud-native-platform.git',
-                gitopsBranch       : 'main',
-                gitopsValuesFile   : 'phase9-gitops-platform/gitops/values-images.yaml',
+                gitopsValuesFile   : 'deploy/dev-k8s/values/values-images.yaml',
                 vaultHarborPath    : 'platform/harbor',
                 vaultGithubPath    : 'platform/github',
                 gitCommitEmail     : 'jenkins@banking-demo.local',
