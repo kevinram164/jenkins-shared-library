@@ -51,6 +51,8 @@ class Projects implements Serializable {
                 harborProject      : 'banking-demo',
                 gitBranch          : 'dev-ocp',
                 gitRepoUrl         : 'https://github.com/kevinram164/banking-demo.git',
+                gitopsRepoUrl      : 'https://github.com/kevinram164/cloud-native-platform.git',
+                gitopsBranch       : 'main',
                 gitopsValuesFile   : 'phase9-gitops-platform/gitops/values-images.yaml',
                 vaultHarborPath    : 'platform/harbor',
                 vaultGithubPath    : 'platform/github',
