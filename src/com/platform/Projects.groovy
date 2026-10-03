@@ -47,7 +47,7 @@ class Projects implements Serializable {
 
         'banking-demo': [
             defaults: [
-                harborHost         : 'harbor-npd.co',
+                harborHost         : 'npd-harbor.co',
                 harborProject      : 'banking-demo',
                 gitBranch          : 'dev-k8s',
                 gitRepoUrl         : 'https://github.com/kevinram164/banking-demo.git',
