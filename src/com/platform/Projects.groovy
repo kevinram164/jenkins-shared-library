@@ -10,11 +10,11 @@ class Projects implements Serializable {
     static final Map CATALOG = [
         'cinehome': [
             defaults: [
-                harborHost         : 'harbor-platform.apps.ocp01.npd.co',
+                harborHost         : 'npd-harbor.co',
                 harborProject      : 'movie-web',
                 gitBranch          : 'main',
                 gitRepoUrl         : 'https://github.com/kevinram164/movie-web.git',
-                gitopsValuesFile   : 'gitops/values-images.yaml',
+                gitopsValuesFile   : 'deploy/dev-k8s/values/values-images.yaml',
                 vaultHarborPath    : 'cinehome/harbor',
                 vaultGithubPath    : 'platform/github',
                 gitCommitEmail     : 'jenkins@cinehome.local',
