@@ -165,11 +165,11 @@ class Projects implements Serializable {
 
         'npd-shop': [
             defaults: [
-                harborHost         : 'harbor-platform.apps.ocp01.npd.co',
+                harborHost         : 'npd-harbor.co',
                 harborProject      : 'npd-shop',
                 gitBranch          : 'main',
                 gitRepoUrl         : 'https://github.com/kevinram164/npd-shop.git',
-                gitopsValuesFile   : 'gitops/values-images.yaml',
+                gitopsValuesFile   : 'deploy/dev-k8s/values/values-images.yaml',
                 vaultHarborPath    : 'npd-shop/harbor',
                 vaultGithubPath    : 'platform/github',
                 gitCommitEmail     : 'jenkins@npd-shop.local',
